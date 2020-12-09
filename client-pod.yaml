@@ -1,12 +1,19 @@
 apiVersion: v1
+# We choose Pod as our objects. A pod is  group of a very related containers between them and it is the minimal expresion of container deployment in k8s.
 kind: Pod
 metadata:
   name: client-pod
+# k8s uses labels to select objects and related different yaml files between them.
   labels:
+  # We are going to label this object with the component label, called web. In our other yaml file, we will use this label to related to this.
     component: web
+    env: dev
+    language: react
 spec:
   containers:
     - name: client
+    # This is the image in docker hub we want to use.
       image: stephengrider/multi-client
       ports:
+    # We expose port 3000 although we will need more configuration in the service yaml file.
         - containerPort: 3000
