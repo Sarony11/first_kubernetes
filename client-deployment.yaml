@@ -5,21 +5,21 @@ kind: Deployment
 metadata:
   name: client-deployment
 spec:
-  # replicas is the amount of pods you declare to kubernetes that are to be running and healthy.
+# replicas is the amount of pods you declare to kubernetes that are to be running and healthy.
   replicas: 1
-  # This selector will select the componente:web that we configure later in the template. We may have several templates with different labels, and only select some of them.
+# This selector will select the componente:web that we configure later in the template. We may have several templates with different labels, and only select some of them.
   selector:
     matchLabels:
-      component:web
-  # This template is going to be use for each pod.
+      component: web
+# This template is going to be use for each pod.
   template:
-    # So this metadata belongs to each pod in the deployment
+# So this metadata belongs to each pod in the deployment
     metadata:
       labels:
-        component:web
+        component: web
     spec:
       containers:
-      - name: client
-        image: stephengrider/multi-client
-        ports:
-          - containerPort:3000
+        - name: client
+          image: stephengrider/multi-client
+          ports:
+            - containerPort: 3000
